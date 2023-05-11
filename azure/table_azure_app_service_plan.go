@@ -104,6 +104,12 @@ func tableAzureAppServicePlan(_ context.Context) *plugin.Table {
 				Default:     false,
 			},
 			{
+				Name:        "compute_mode",
+				Description: "Specify whether the resource is using Shared or Dedicated workers",
+				Type:        proto.ColumnType_STRING,
+				Transform:   transform.FromField("AppServicePlanProperties.ComputeMode").Transform(transform.ToString),
+			},
+			{
 				Name:        "sku_capacity",
 				Description: "Current number of instances assigned to the resource.",
 				Type:        proto.ColumnType_INT,
